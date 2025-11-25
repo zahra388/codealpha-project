@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Categories Image Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+  <div class="caption" id="caption"></div>
+  <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+  <button class="next" onclick="changeSlide(1)">&#10095;</button>
+</div>
+
+  <h1>All Categories Gallery</h1>
+  <div class="filters">
+    <button onclick="filterSelection('all')">All</button>
+    <button onclick="filterSelection('nature')">Nature</button>
+    <button onclick="filterSelection('architecture')">Architecture</button>
+    <button onclick="filterSelection('people')">People</button>
+    <button onclick="filterSelection('food')">Food</button>
+  </div>
+
+  <div class="gallery" id="gallery">
+
+    <!-- NATURE -->
+    <div class="gallery-item nature"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Mountain"><div class="desc">Peaceful mountain valley</div></div>
+    <div class="gallery-item nature"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Waterfall"><div class="desc">Waterfall in lush forest</div></div>
+    <div class="gallery-item nature"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7" alt="Sunrise"><div class="desc">Golden sunrise hills</div></div>
+    <div class="gallery-item nature"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Ocean"><div class="desc">Calm beach waves</div></div>
+    <div class="gallery-item nature"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b" alt="Flowers"><div class="desc">Wildflowers in bloom</div></div>
+    <div class="gallery-item nature"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" alt="River"><div class="desc">Flowing river rocks</div></div>
+    <div class="gallery-item nature"><img src="https://images.unsplash.com/photo-1503264116251-35a269479413" alt="Tree"><div class="desc">Lone tree in field</div></div>
+
+    <!-- ARCHITECTURE -->
+    <div class="gallery-item architecture"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d" alt="Building"><div class="desc">Modern glass skyscraper</div></div>
+    <div class="gallery-item architecture"><img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8" alt="Temple"><div class="desc">Ancient stone temple</div></div>
+    <div class="gallery-item architecture"><img src="https://images.unsplash.com/photo-1505842465776-3b4953ca4f44" alt="Cathedral"><div class="desc">Cathedral at sunset</div></div>
+    <div class="gallery-item architecture"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d" alt="Skyscraper"><div class="desc">Urban skyline view</div></div>
+
+    <!-- PEOPLE -->
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Woman"><div class="desc">Smiling woman portrait</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91" alt="Man"><div class="desc">Confident man close-up</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Girl"><div class="desc">Girl in sunlight</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d" alt="Boy"><div class="desc">Boy smiling outdoors</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" alt="Woman"><div class="desc">Elegant woman fashion</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" alt="Woman"><div class="desc">Creative studio shot</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e" alt="Friends"><div class="desc">Friends laughing together</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Girl"><div class="desc">Girl with flowers</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91" alt="Man"><div class="desc">Man thinking deeply</div></div>
+    <div class="gallery-item people"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Woman"><div class="desc">Smiling woman again</div></div>
+
+    <!-- FOOD -->
+    <div class="gallery-item food"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Breakfast"><div class="desc">Healthy breakfast bowl</div></div>
+    <div class="gallery-item food"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Fruit"><div class="desc">Fresh fruit platter</div></div>
+    <div class="gallery-item food"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d" alt="Burger"><div class="desc">Cheese burger delight</div></div>
+    <div class="gallery-item food"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Smoothie"><div class="desc">Tropical smoothie glass</div></div>
+    <div class="gallery-item food"><img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352" alt="Salad"><div class="desc">Colorful vegetable salad</div></div>
+    <div class="gallery-item food"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" alt="Cake"><div class="desc">Sweet chocolate cake</div></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
