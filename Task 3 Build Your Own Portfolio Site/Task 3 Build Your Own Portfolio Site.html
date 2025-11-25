@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name | Frontend Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* ===== Professional CSS with Animations ===== */
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --accent: #ff9500;
+      --dark: #1e3c72;
+      --light: #f9f9fb;
+      --text: #080808;
+      --gray: #888;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--light);
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background: white;
+  padding: 15px 40px;
+}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.1)" points="0,100 100,0 100,100"/></svg>') no-repeat;
+      background-size: cover;
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      flex: 1;
+      z-index: 2;
+      animation: fadeInLeft 1s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+      font-size: 1rem;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .primary:hover {
+      background: #e68900;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(255, 149, 0, 0.3);
+    }
+
+    .secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .secondary:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+      animation: fadeInRight 1s ease-out;
+    }
+
+    .hero-image img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 10px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 5%;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 3.5rem;
+      color: var(--dark);
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    /* About */
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 2rem;
+      color: var(--gray);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: transform 0.3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 250px; /* Adjust height as per your need */
+      background-color: #e9e9e9;  /* Placeholder color if no image */
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .project-card:hover .project-img img {
+      transform: scale(1.1);
+    }
+
+    .project-info {
+      padding: 1.8rem;
+    }
+
+    .project-info h3 {
+      margin-bottom: 0.8rem;
+      color: var(--dark);
+      font-size: 1.4rem;
+    }
+
+    .project-info p {
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .project-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form {
+  display: flex;
+  flex-direction: column;;
+  gap: 12px;
+  max-width: 300px;
+  margin-top: 20px;
+}
+  .contact-links a {
+  text-decoration: none;
+  color: #6141ca;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  border: 1px solid #6c2cdc;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  resize: vertical; /* allow resizing vertically */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
+  flex: 1 1 40%; /* grow and shrink, 40% width each */
+  min-width: 200px;
+}
+
+.contact-form textarea {
+  flex: 1 1 100%; /* full width */
+  min-height: 100px;
+  font-family: Arial, sans-serif;
+}
+
+.contact-form button {
+  background-color: hsl(129, 52%, 39%);
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      background: #111;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 { font-size: 3rem; }
+      .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+      .hero-image { margin-top: 3rem; }
+      .hero-image img { width: 250px; height: 250px; }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 100%; left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 1.5rem 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        display: none;
+        gap: 0;
+      }
+      .nav-links.active { display: flex; }
+      .nav-link { padding: 1rem 5%; text-align: center; }
+      h2 { font-size: 2.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero-buttons { justify-content: center; }
+      .btn { padding: 12px 24px; font-size: 0.9rem; }
+    }
+
+    /* Animations */
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">Zahra<span>Batool</span></div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero"><br>
+    <div class="hero-content">
+      <h1>Hi, I'm Zahra Batool</h1>
+      <p class="subtitle">Frontend Developer & ethical hacker</p>
+      <p class="description">I craft beautiful, responsive, and user-friendly web experiences using modern technologies like HTML, CSS, JavaScript, and React.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn secondary">Hire Me</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="profilepic.jpg" alt="Your Photo" />
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-text">
+      <p>I'm a passionate frontend developer with a keen eye for design and performance.</p>
+      <p>Front-End Developer and Ethical Hacker passionate about creating modern, responsive digital experiences and securing the systems behind them. I blend creative UI/UX with cybersecurity awareness to build web solutions</p>
+      <p>Currently doing internship at <strong>CodeAlpha</strong> and building real-world projects.</p>
+      <h3 style="margin: 2rem 0 1rem; color: var(--dark);">Skills</h3>
+      <div class="skills">
+        <span class="skill">HTML5</span>
+        <span class="skill">CSS3</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">React.js</span>
+        <span class="skill">Responsive Design</span>
+        <span class="skill">Git & GitHub</span>
+        <span class="skill">Figma</span>
+        <span class="skill">Bootstrap</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-img">
+          <img src="imagecalculator.jpg" height="opx" width="0px" alt="Calculator" />
+        </div>
+        <div class="project-info">
+          <h3>Interactive Calculator</h3>
+          <p>A calculator is an electronic or mechanical device used to perform mathematical calculations. It can handle simple operations like addition, subtraction, multiplication, and division, or advanced calculations like scientific, financial, and statistical computations</p>
+          <a href="https://github.com/yourusername/CodeAlpha_Calculator" target="_blank" class="project-link">
+            View Code <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img">
+          <img src="imagegalleryz.jpg" alt="imagegalleryz" />
+        </div>
+        <div class="project-info">
+          <h3>imagegalleryz</h3>
+          <p>An Image Gallery is a space or webpage where images are organized and displayed in a structured way. It can be on a website, mobile app, or any digital platform. The main purpose is to showcase images beautifully and allow users to view, select, or share them easily.</p>
+          <a href="#" class="project-link">
+            Live Demo <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Contact -->
+<section id="contact">
+  <h2>Get In Touch</h2>
+  <p>I'm open to freelance work, internships, and collaboration opportunities. Let's build something amazing together!</p>
+  
+  <div class="contact-links">
+    <!-- Email -->
+    <a href="mailto:your.email@gmail.com">
+      <i class="fas fa-envelope"></i> your.email@gmail.com
+    </a>
+    
+    <!-- Alternative Email -->
+    <a href="mailto:your.alt.email@gmail.com">
+      <i class="fas fa-envelope"></i> your.alt.email@gmail.com
+    </a>
+    
+    <!-- Phone Number -->
+    <a href="tel:+1234567890">
+      <i class="fas fa-phone"></i> +1 (234) 567-890
+    </a>
+    
+    <!-- LinkedIn -->
+    <a href="https://linkedin.com/in/yourprofile" target="_blank">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    
+    <!-- GitHub -->
+    <a href="https://github.com/yourusername" target="_blank">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+    
+    <!-- Twitter -->
+    <a href="https://twitter.com/yourusername" target="_blank">
+      <i class="fab fa-twitter"></i> Twitter
+    </a>
+    
+    <!-- Instagram -->
+    <a href="https://instagram.com/yourusername" target="_blank">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    
+    <!-- Personal Website / Portfolio -->
+    <a href="https://yourwebsite.com" target="_blank">
+      <i class="fas fa-globe"></i> Portfolio
+    </a>
+  </div>
+  
+  <!-- Optional: Contact Form -->
+  <form action="mailto:your.email@gmail.com" method="post" enctype="text/plain" class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+
+  <footer>
+    <p>&copy; 2025 Zahra. Made with <i class="fas fa-heart" style="color: #e63946;"></i> for CodeAlpha Internship</p>
+  </footer>
+
+  <script>
+    // ===== Professional JavaScript =====
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Active Nav Link on Scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = 'home';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Mobile Menu Toggle
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Section Fade In on Scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Close mobile menu when clicking link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
